@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cream text-plum font-body;
+  }
+  h1, h2, h3 {
+    @apply font-heading;
+  }
+  input, select, textarea {
+    @apply w-full rounded border border-mauve-light bg-cream-light px-3 py-2 text-plum
+           placeholder:text-mauve focus:border-plum focus:outline-none focus:ring-1 focus:ring-plum;
+  }
+  input[type='checkbox'], input[type='radio'] {
+    @apply w-auto accent-plum;
+  }
+  label {
+    @apply mb-1 block text-sm font-semibold;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded px-4 py-2 text-sm font-semibold
+           transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-plum text-cream-light hover:bg-plum-light;
+  }
+  .btn-secondary {
+    @apply btn bg-mauve text-white hover:bg-mauve-dark;
+  }
+  .btn-outline {
+    @apply btn border border-plum text-plum hover:bg-plum hover:text-cream-light;
+  }
+  .btn-danger {
+    @apply btn border border-red-800 text-red-800 hover:bg-red-800 hover:text-white;
+  }
+  .panel {
+    @apply rounded-md border border-cream-dark bg-cream-light p-5;
+  }
+  .error-box {
+    @apply rounded border border-red-300 bg-red-50 px-3 py-2 text-sm text-red-800;
+  }
+  .success-box {
+    @apply rounded border border-green-300 bg-green-50 px-3 py-2 text-sm text-green-800;
+  }
+}
