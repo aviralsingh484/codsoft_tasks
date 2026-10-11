@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// role is ADMIN, TEACHER or STUDENT
+model User {
+  id       Int      @id @default(autoincrement())
+  name     String
+  email    String   @unique
+  password String
+  role     String
+  subject  String?
+  student  Student?
+}
+
+model Student {
+  id         Int          @id @default(autoincrement())
+  rollNo     String       @unique
+  className  String
+  phone      String?
+  userId     Int          @unique
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  attendance Attendance[]
+  results    Result[]
+  fees       Fee[]
+}
+
+model Attendance {
+  id        Int      @id @default(autoincrement())
+  date      DateTime
+  status    String
+  studentId Int
+  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+}
+
+model Exam {
+  id       Int      @id @default(autoincrement())
+  title    String
+  subject  String
+  date     DateTime
+  maxMarks Int
+  results  Result[]
+}
+
+model Result {
+  id        Int     @id @default(autoincrement())
+  marks     Int
+  examId    Int
+  studentId Int
+  exam      Exam    @relation(fields: [examId], references: [id], onDelete: Cascade)
+  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([examId, studentId])
+}
+
+model Fee {
+  id        Int      @id @default(autoincrement())
+  title     String
+  amount    Int
+  paid      Boolean  @default(false)
+  dueDate   DateTime
+  studentId Int
+  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+}

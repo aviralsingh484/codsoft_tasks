@@ -1,0 +1,30 @@
+:root { --terra: #C2623F; --sand: #F4EADD; --char: #2E2E2E; --line: #E0D2BF; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; background: var(--sand); color: var(--char); }
+a { text-decoration: none; }
+.app { display: flex; min-height: 100vh; }
+.sidebar { width: 220px; background: var(--char); padding: 20px 0; display: flex; flex-direction: column; }
+.sidebar h2 { color: var(--terra); margin: 0 20px 20px; }
+.sidebar a { color: #ddd; padding: 12px 20px; }
+.sidebar a.active, .sidebar a:hover { background: var(--terra); color: #fff; }
+.main { flex: 1; }
+.topbar { background: #fff; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); }
+.content { padding: 24px; }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 18px; margin-bottom: 18px; }
+.cards { display: flex; gap: 16px; flex-wrap: wrap; }
+.stat { background: #fff; border-left: 5px solid var(--terra); padding: 16px 22px; min-width: 190px; border-radius: 8px; display: flex; flex-direction: column; }
+.stat b { font-size: 28px; margin-top: 6px; }
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+th { background: var(--char); color: #fff; }
+input, select { padding: 9px; border: 1px solid var(--line); border-radius: 6px; margin: 0 8px 8px 0; }
+button { background: var(--terra); color: #fff; border: 0; padding: 9px 16px; border-radius: 6px; cursor: pointer; }
+button.grey { background: #777; }
+.error { background: #f8d7cf; color: #8a2c14; padding: 8px; border-radius: 6px; margin: 8px 0; }
+.login { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+.login .card { width: 360px; }
+.login input { width: 100%; }
+.demo { margin-top: 14px; font-size: 13px; background: var(--sand); padding: 10px; border-radius: 6px; }
+.demo div { cursor: pointer; padding: 3px 0; color: var(--terra); }
+.green { color: #2f7d4f; font-weight: 600; }
+.red { color: #b3321a; font-weight: 600; }
